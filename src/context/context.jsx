@@ -29,8 +29,29 @@ export default function GlobalState({children}){
       console.log(e);
     }
   }
+
+  //즐겨찾기 등록 리스트(favoritesList) state의 배열을 수정(추가/삭제)
+  //state의 배열은 직접 수정 x => ...으로 분히라고 []로 감싸서 카피본으로 수정
+  //변수를 안쓰고 useState를 사용하는 이유가 데이터값이 바뀌면 화면도 같이 갱신해주려고 
+  async function hAddToFavorite(getCurItem){
+    let copyFavoriteList = [...favoritesList]; //배열 통째로 분해했다가 다시 배열로 만들어서 대입
+    //let copyFavoriteList = favoritesList; //주소값(공간의 위치)만 들어감
+
+    //동일한 아이디가 있는지 검사
+    const index = copyFavoriteList.findIndex(e=>e.id === getCurItem.id); //하나씩 비교해서 못 찾으면 -1, 찾으면 해당 위치 return
+    if(index == -1){  
+      copyFavoriteList.push(getCurItem);  //없으면 즐겨찾기 리스트 추가
+    } else {
+      copyFavoriteList.splice(index);  //즐겨찾기 리스트에 있엇으면 제거
+    }
+
+    //새로 만든 배열을 state에 엎어친다.(한개의 값만 수정하면 화면이 안바뀌니깐 배열째로 엎어침)
+    setFavoritesList(copyFavoriteList);
+  }
+
+
   return(
-    <GlobalContext.Provider value={{searchParam, setSearchParam, hSubmit, foodList, setFoodList, foodDetailData, setFoodDetailData, favoritesList, setFavoritesList}}>
+    <GlobalContext.Provider value={{searchParam, setSearchParam, hSubmit, foodList, setFoodList, foodDetailData, setFoodDetailData, favoritesList, setFavoritesList, hAddToFavorite}}>
       {children}
     </GlobalContext.Provider>
   )

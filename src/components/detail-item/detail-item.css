@@ -17,9 +17,26 @@
   overflow: hidden;
   border-radius: 0.75rem;
 }
-/* .text-publisher{
-
+.text-publisher{
+  color: green;
+  font-weight: 600;
+  font-size: 20px;
 }
 .text-title{
-
-} */
+  color:black;
+  font-weight: 900;
+  font-size: 25px;
+  white-space: nowrap; /*한줄로 표시*/
+  text-overflow: ellipsis; /*...처리*/
+  overflow: hidden; /*넘어가는 글자 숨김*/
+  margin: 8px 0; /* 2개면 상하/좌우  , 4개이면 상,우,하,좌 */
+} 
+.link-detail{
+  display: inline-block;
+  background-color: black;
+  color: white;
+  padding: 0.75rem 2rem;
+  border-radius: 0.5rem;
+  letter-spacing: 5px;/*글자간격*/
+  box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px 01px rgba(0,0,0,0.6); /*그림자효과*/
+}

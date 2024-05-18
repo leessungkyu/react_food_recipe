@@ -22,7 +22,7 @@ export default function Home(){
           //데이터가 없을때
           <div className="no-item">
             <p>검색하세요. pizza, banana, aplle ...</p>
-            <a href="https://forkify-api.herokuapp.com/phrase.html" target="_blank">
+            <a href="https://forkify-api.herokuapp.com/phrases.html" target="_blank">
               <button className="guide-btn"> 검색항목안내</button>
             </a>
           </div>
